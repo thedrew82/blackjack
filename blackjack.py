@@ -2,9 +2,12 @@ import random
 import yaml
 
 
-with open('house.yaml') as f:
-    house = yaml.safe_load(f)
+def load_config(file):
+    with open(file) as f:
+        return yaml.safe_load(f)
 
+
+house = load_config('house.yaml')
 suits = tuple(house['suits'])
 ranks = tuple(house['ranks'])
 values = house['values']
