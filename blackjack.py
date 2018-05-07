@@ -56,8 +56,17 @@ class Hand:
         self.cards.append(card)
 
     def adjust_for_ace(self):
-        aces = ('Ace of Clubs', 'Ace of Hearts', 'Ace of Diamonds', 'Ace of Spades')
-        for card in self.cards:
-            if card in aces:
-                result = self.value - 10
-                return result
+        self.value = self.value - 10
+
+
+class Chips:
+
+    def __init__(self):
+        self.total = 0
+        self.bet = 0
+
+    def win_bet(self):
+        self.total += self.bet
+
+    def lose_bet(self):
+        self.total = self.total - self.bet
