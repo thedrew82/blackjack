@@ -52,11 +52,12 @@ class Hand:
         self.value = 0
         self.aces = 0
 
-    def __str__(self):
-        return ', '.join(str(x) for x in self.cards)
-
     def add_card(self, card):
         self.cards.append(card)
 
     def adjust_for_ace(self):
-        pass
+        aces = ('Ace of Clubs', 'Ace of Hearts', 'Ace of Diamonds', 'Ace of Spades')
+        for card in self.cards:
+            if card in aces:
+                result = self.value - 10
+                return result
