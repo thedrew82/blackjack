@@ -34,6 +34,12 @@ class TestBlackJack(unittest.TestCase):
         result = ['Two of Hearts', 'Ace of Spades', 'King of Clubs']
         self.assertEqual(result.sort(), test_hand.cards.sort())
 
+    def test_hand_check_ace(self):
+        test_hand = blackjack.Hand()
+        test_hand.cards = ['Ace of Hearts', 'Ace of Spades']
+        test_hand.check_for_ace()
+        self.assertEqual(2, test_hand.aces)
+
     def test_hand_adjust_ace(self):
         test_hand = blackjack.Hand()
         test_hand.value = 31

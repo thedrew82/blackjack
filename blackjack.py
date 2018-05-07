@@ -55,6 +55,12 @@ class Hand:
     def add_card(self, card):
         self.cards.append(card)
 
+    def check_for_ace(self):
+        ace = ('Ace of Clubs', 'Ace of Spades', 'Ace of Hearts', 'Ace of Diamonds')
+        for card in self.cards:
+            if card in ace:
+                self.aces += 1
+
     def adjust_for_ace(self):
         self.value = self.value - 10
 
