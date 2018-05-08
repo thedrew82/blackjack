@@ -2,16 +2,15 @@ import random
 import yaml
 
 
-def load_config(file):
+def load_cards(file):
     with open(file) as f:
-        return yaml.safe_load(f)
+        data = yaml.safe_load(f)
+        s = tuple(data['suits'])
+        r = tuple(data['ranks'])
+        v = data['values']
+        return s, r, v
 
-
-house = load_config('house.yaml')
-suits = tuple(house['suits'])
-ranks = tuple(house['ranks'])
-values = house['values']
-
+(suits, ranks, values) = load_cards('house.yaml')
 
 class Card:
 
@@ -76,3 +75,7 @@ class Chips:
 
     def lose_bet(self):
         self.total = self.total - self.bet
+
+
+if __name__ == '__main__':
+    pass
