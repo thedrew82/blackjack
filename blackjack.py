@@ -96,6 +96,7 @@ def take_bet(total):
 
 
 def hit(deck, hand):
+    print('Hit!')
     hand.add_card(deck.deal())
 
 
@@ -117,6 +118,7 @@ def hit_or_stand(deck, hand):
             playing = False
         elif not action:
             hit(deck, hand)
+            playing = True
         else:
             raise ValueError()
     except ValueError:
@@ -133,22 +135,25 @@ if __name__ == '__main__':
     my_hand.add_card(my_deck.deal())
     while True:
         take_bet(my_chips.total)
-        get_hand_value(my_hand)
-        print(my_hand)
-        print(my_hand.value)
-        hit_or_stand(my_deck, my_hand)
+        playing = True
 
         while playing:
-            hit_or_stand(my_deck, my_hand)
             get_hand_value(my_hand)
             print(my_hand)
-            print(my_hand.value)
 
-        if my_hand.value == 21:
-            print('WIN!')
-        elif my_hand.value > 21:
-            print('BUST!')
-        else:
-            print(my_hand.value)
+            if my_hand.value == 21:
+                print(my_hand.value)
+                print('WIN!')
+                break
+            elif my_hand.value > 21:
+                print(my_hand.value)
+                print('BUST!')
+                break
+            else:
+                print(my_hand.value)
+                hit_or_stand(my_deck, my_hand)
+
+        print(my_hand)
+        print(my_hand.value)
 
         break
